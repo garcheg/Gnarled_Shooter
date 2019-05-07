@@ -2,5 +2,18 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="globalVars.cpp">
+      <Filter>gVars</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="gVars">
+      <UniqueIdentifier>{6e8fe9b3-c802-4755-b1ce-17142911ce4c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="globalVars.h">
+      <Filter>gVars</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 
+#include "globalVars.h"
+
 using namespace std;
 // ~~~~~~~~~ [ Vars ] ~~~~~~~~~ //
 // ~~~~~~~~~ [ Func's ] ~~~~~~~~~ //
