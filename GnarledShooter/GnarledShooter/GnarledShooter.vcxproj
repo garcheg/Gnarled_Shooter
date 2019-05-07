@@ -22,11 +22,13 @@
     <ClCompile Include="generalLoad.cpp" />
     <ClCompile Include="globalVars.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="render.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="generalLoad.h" />
     <ClInclude Include="globalVars.h" />
+    <ClInclude Include="render.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

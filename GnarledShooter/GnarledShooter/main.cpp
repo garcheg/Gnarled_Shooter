@@ -7,6 +7,7 @@
 #include "globalVars.h"
 #include "Utils.h"
 #include "generalLoad.h"
+#include "render.h"
 
 using namespace std;
 // ~~~~~~~~~ [ Vars ] ~~~~~~~~~ //
@@ -30,6 +31,8 @@ void InitThread() {
 		Utilities::PrintLog("-");
 		cout << endl;
 	}
-
-
+	if (gVars.GLOBAL_SETTINGS.DEVELOPER_MODE) { Utilities::PrintLog("Быстрая подгрузка нужных файлов"); }
+	loadGame::StartupLoadFast();
+	if (gVars.GLOBAL_SETTINGS.DEVELOPER_MODE) { Utilities::PrintLog("Запуск потока графики"); }
+	Utilities::FastThread(renderGame::generalThread);
 }
