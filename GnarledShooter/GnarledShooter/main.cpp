@@ -5,6 +5,7 @@
 
 #include "globalVars.h"
 #include "Utils.h"
+#include "generalLoad.h"
 
 using namespace std;
 // ~~~~~~~~~ [ Vars ] ~~~~~~~~~ //
