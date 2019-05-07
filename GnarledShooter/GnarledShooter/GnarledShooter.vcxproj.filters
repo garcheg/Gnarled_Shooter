@@ -5,15 +5,24 @@
     <ClCompile Include="globalVars.cpp">
       <Filter>gVars</Filter>
     </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="gVars">
       <UniqueIdentifier>{6e8fe9b3-c802-4755-b1ce-17142911ce4c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{3c54abb6-a1b7-4b33-8171-b159cdd39cc4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="globalVars.h">
       <Filter>gVars</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
