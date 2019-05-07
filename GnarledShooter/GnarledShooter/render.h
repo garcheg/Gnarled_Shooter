@@ -10,4 +10,5 @@
 
 namespace renderGame {
 	void generalThread();
+	void Initialization();
 }

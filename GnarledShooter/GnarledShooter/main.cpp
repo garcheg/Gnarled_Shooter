@@ -18,7 +18,9 @@ void InitThread(); // Startup function
 int main() {
 	setlocale(LC_ALL, "ru");
 	InitThread();
-	system("pause");
+	while (true) {
+		cin.get();
+	}
 	return 0;
 }
 
@@ -35,4 +37,5 @@ void InitThread() {
 	loadGame::StartupLoadFast();
 	if (gVars.GLOBAL_SETTINGS.DEVELOPER_MODE) { Utilities::PrintLog("Запуск потока графики"); }
 	Utilities::FastThread(renderGame::generalThread);
+
 }
