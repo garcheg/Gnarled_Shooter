@@ -8,6 +8,9 @@
     <ClCompile Include="Utils.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="generalLoad.cpp">
+      <Filter>Load</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="gVars">
@@ -16,6 +19,9 @@
     <Filter Include="Utils">
       <UniqueIdentifier>{3c54abb6-a1b7-4b33-8171-b159cdd39cc4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Load">
+      <UniqueIdentifier>{6d392b2c-9100-4790-b32f-56ff98d58d82}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="globalVars.h">
@@ -23,6 +29,9 @@
     </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="generalLoad.h">
+      <Filter>Load</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

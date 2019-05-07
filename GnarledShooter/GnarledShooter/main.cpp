@@ -22,5 +22,9 @@ int main() {
 void InitThread() {
 	if (gVars.GLOBAL_SETTINGS.DEVELOPER_MODE) {
 		Utilities::PrintLog("Запущен режим разработчика игры!");
+		Utilities::PrintLog("Для его диактивации измените режим сборки на Release");
+		cout << endl;
 	}
+
+
 }
