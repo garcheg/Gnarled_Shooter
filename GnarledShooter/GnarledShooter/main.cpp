@@ -1,4 +1,5 @@
 // ~~~~~~~~~ [ Includes ] ~~~~~~~~~ //
+#include <SFML/Graphics.hpp>
 #include <Windows.h>
 #include <iostream>
 #include <string>
@@ -23,7 +24,10 @@ int main() {
 void InitThread() {
 	if (gVars.GLOBAL_SETTINGS.DEVELOPER_MODE) {
 		Utilities::PrintLog("Запущен режим разработчика игры!");
-		Utilities::PrintLog("Для его диактивации измените режим сборки на Release");
+		Utilities::PrintLog("Для его отключения измените режим сборки на Release");
+		cout << endl;
+		Utilities::PrintLog("Чит-коды: ");
+		Utilities::PrintLog("-");
 		cout << endl;
 	}
 
