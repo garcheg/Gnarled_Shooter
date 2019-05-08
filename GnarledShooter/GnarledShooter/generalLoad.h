@@ -1,4 +1,5 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 #include <Windows.h>
 #include <iostream>
 #include <string>
@@ -6,6 +7,7 @@
 #include <thread>
 
 #include "globalVars.h"
+#include "Utils.h"
 
 namespace loadGame {
 	void StartupLoadFast();

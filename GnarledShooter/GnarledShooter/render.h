@@ -11,4 +11,5 @@
 namespace renderGame {
 	void generalThread();
 	void Initialization();
+	void DrawGeneralMenu();
 }

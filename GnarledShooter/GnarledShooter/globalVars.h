@@ -1,5 +1,4 @@
 #pragma once
-
 #include <SFML/Graphics.hpp>
 #include <Windows.h>
 #include <iostream>
@@ -29,11 +28,23 @@ struct globalVars {
 
 	struct {
 		RenderWindow *window;
+
+		struct {
+			Text logo_text_menu;
+		} Menu;
 	} RENDER_VARS;
 
 	struct {
 		Font f_arial;
 	} FontList;
+
+	struct {
+		struct {
+			Color logo_text_color = Color(250, 250, 250, 128);
+		} Menu;
+	} ColorScheme;
+
+	
 
 
 }; extern globalVars gVars;

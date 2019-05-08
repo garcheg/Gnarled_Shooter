@@ -15,7 +15,7 @@ void renderGame::generalThread() {
 		}
 
 		gVars.RENDER_VARS.window->clear();
-
+		if (gVars.GLOBAL_VARS.gameActiveMode == MENU) { renderGame::DrawGeneralMenu(); }
 		gVars.RENDER_VARS.window->display();
 	}
 }
@@ -24,4 +24,9 @@ void renderGame::Initialization() {
 	gVars.RENDER_VARS.window = new RenderWindow(VideoMode(gVars.GLOBAL_SETTINGS.WINDOW_WIDTH, gVars.GLOBAL_SETTINGS.WINDOW_HEIGHT), gVars.GLOBAL_SETTINGS.WINDOW_NAME);
 
 	
+}
+
+void renderGame::DrawGeneralMenu() {
+	gVars.RENDER_VARS.Menu.logo_text_menu.setFillColor(gVars.ColorScheme.Menu.logo_text_color);
+	gVars.RENDER_VARS.window->draw(gVars.RENDER_VARS.Menu.logo_text_menu);
 }
