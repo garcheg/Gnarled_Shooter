@@ -14,6 +14,13 @@ void logicGame::Initialization() {
 	logicGame::addMenuButton("LOAD GAME", 1);
 	logicGame::addMenuButton("SETTINGS", 2);
 	logicGame::addMenuButton("EXIT", 3);
+
+	int slider_pos_X = (gVars.GLOBAL_SETTINGS.WINDOW_WIDTH / 2) - (gVars.RENDER_VARS.Settings.BOX_WIDTH / 2) + 50;
+
+	logicGame::addMenuSlider("tttest1", slider_pos_X, 200, 400, 15, 0, 90, 0.3);
+	logicGame::addMenuSlider("ttest1", slider_pos_X, 250, 400, 15, 0, 90, 0.7);
+	logicGame::addMenuSlider("test1", slider_pos_X, 300, 400, 15, 0, 90, 0.1);
+
 }
 
 void logicGame::addMenuButton(string button_name, int func_id) {
@@ -29,6 +36,19 @@ void logicGame::addMenuButton(string button_name, int func_id) {
 	gVars.objList.Menu.objList[gVars.objList.Menu.objNum].width = button_sizeX;
 	gVars.objList.Menu.objList[gVars.objList.Menu.objNum].height = button_sizeY;
 	gVars.objList.Menu.objNum++;
+}
+
+void logicGame::addMenuSlider(string sl_name, int posX, int posY, int width, int height, int func_id, int start_slider_x, float current_value) {
+	gVars.objList.Settings.sliderList[gVars.objList.Settings.sliderNum].slider_name = sl_name;
+	gVars.objList.Settings.sliderList[gVars.objList.Settings.sliderNum].posX = posX;
+	gVars.objList.Settings.sliderList[gVars.objList.Settings.sliderNum].posY = posY;
+	gVars.objList.Settings.sliderList[gVars.objList.Settings.sliderNum].width = width;
+	gVars.objList.Settings.sliderList[gVars.objList.Settings.sliderNum].height = height;
+	gVars.objList.Settings.sliderList[gVars.objList.Settings.sliderNum].func_id = func_id;
+	gVars.objList.Settings.sliderList[gVars.objList.Settings.sliderNum].currentValue = current_value;
+	gVars.objList.Settings.sliderList[gVars.objList.Settings.sliderNum].slider_start_x = start_slider_x;
+
+	gVars.objList.Settings.sliderNum++;
 }
 
 bool logicGame::checkPosRect(int st_x, int st_y, int end_x, int end_y, int obj_x, int obj_y) {
@@ -53,6 +73,10 @@ void logicGame::logicGeneralMenu() {
 
 void logicGame::pressGeneralMenuButton(int func_id) {
 	switch (func_id) {
+		case 2: {
+			gVars.GLOBAL_VARS.gameActiveMode = MENU_SETTINGS;
+			break;
+		}
 		case 3: {
 			gVars.GLOBAL_VARS.GAME_ON = false;
 			break;

@@ -8,7 +8,18 @@ using namespace std;
 using namespace sf;
 
 enum gameActiveStyle {
-	MENU, GAME 
+	MENU, MENU_SETTINGS, GAME 
+};
+
+struct sliderObj {
+	string slider_name = "";
+	int posX, posY;
+	int width, height;
+	int slider_start_x;
+
+	float currentValue;
+
+	int func_id;
 };
 
 
@@ -50,6 +61,22 @@ struct globalVars {
 			Text button_text;
 		} Menu;
 
+		struct {
+			CONST INT BOX_WIDTH = 480;
+			CONST INT BOX_HEIGHT = 480;
+
+			RectangleShape box_background;
+
+			Text WINDOW_NAME;
+
+			struct {
+				Text slider_name;
+				RectangleShape slider_line;
+				RectangleShape slider_currentPoint;
+				
+			} Slider;
+		} Settings;
+
 		Vector2i mouse_pos;
 	} RENDER_VARS;
 
@@ -71,6 +98,18 @@ struct globalVars {
 			Color button_text_color = Color(255, 255, 255, 122);
 		} Menu;
 
+		struct {
+			Color box_color = Color(255, 255, 255, 20);
+
+			Color window_nameText = Color(255, 255, 255, 60);
+
+			struct {
+				Color text_color = Color(255, 255, 255, 128);
+				Color line_slider = Color(255, 255, 255, 90);
+				Color line_pointer = Color(255, 0, 255, 90);
+			} Slider;
+		} Settings;
+
 
 	} ColorScheme;
 
@@ -81,6 +120,11 @@ struct globalVars {
 			int objNum = 0;
 
 		} Menu;
+
+		struct {
+			sliderObj sliderList[10];
+			int sliderNum = 0;
+		} Settings;
 	} objList;
 
 }; extern globalVars gVars;

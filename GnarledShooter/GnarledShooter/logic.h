@@ -13,6 +13,7 @@ namespace logicGame {
 	void initLogic();
 	void Initialization();
 	void addMenuButton(string button_name, int func_id = 0);
+	void addMenuSlider(string sl_name, int posX, int posY, int width, int height, int func_id, int start_slider_x, float current_value = 0);
 	bool checkPosRect(int st_x, int st_y, int end_x, int end_y, int obj_x, int obj_y);
 	void logicGeneralMenu();
 	void pressGeneralMenuButton(int func_id);

@@ -25,6 +25,12 @@ void loadGame::StartupLoadFast() {
 	gVars.RENDER_VARS.Background.background_box.setPosition(Vector2f(0, 0));
 	gVars.RENDER_VARS.Background.background_box.setSize(Vector2f(gVars.GLOBAL_SETTINGS.WINDOW_WIDTH, gVars.GLOBAL_SETTINGS.WINDOW_HEIGHT));
 
+	gVars.RENDER_VARS.Settings.WINDOW_NAME.setFont(gVars.FontList.f_EuropeCondensed);
+	gVars.RENDER_VARS.Settings.WINDOW_NAME.setCharacterSize(53);
+	gVars.RENDER_VARS.Settings.WINDOW_NAME.setString("Settings");
+
+	gVars.RENDER_VARS.Settings.Slider.slider_name.setFont(gVars.FontList.f_EuropeCondensed);
+
 }
 
 void loadGame::GameLoadNormal() {

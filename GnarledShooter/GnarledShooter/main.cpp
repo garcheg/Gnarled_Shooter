@@ -41,4 +41,8 @@ void InitThread() {
 	if (gVars.GLOBAL_SETTINGS.DEVELOPER_MODE) { Utilities::PrintLog("Запуск потока логики"); }
 	Utilities::FastThread(logicGame::initLogic);
 
+
+	// DEBUG FUNCS
+	gVars.GLOBAL_VARS.gameActiveMode = MENU_SETTINGS;
+
 }

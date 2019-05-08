@@ -13,4 +13,6 @@ namespace renderGame {
 	void generalThread();
 	void Initialization();
 	void DrawGeneralMenu();
+	void DrawSettingsMenu();
+	void DrawSliderSettings();
 }
