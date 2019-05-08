@@ -14,6 +14,9 @@
     <ClCompile Include="render.cpp">
       <Filter>Render</Filter>
     </ClCompile>
+    <ClCompile Include="logic.cpp">
+      <Filter>Logic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="gVars">
@@ -28,6 +31,9 @@
     <Filter Include="Render">
       <UniqueIdentifier>{a888a404-e324-44fe-86fd-f90258b8afc3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Logic">
+      <UniqueIdentifier>{b3f40f5a-1cd8-45fd-9a99-c2938a5aa99e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="globalVars.h">
@@ -41,6 +47,9 @@
     </ClInclude>
     <ClInclude Include="render.h">
       <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="logic.h">
+      <Filter>Logic</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

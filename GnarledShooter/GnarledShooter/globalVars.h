@@ -11,6 +11,16 @@ enum gameActiveStyle {
 	MENU, GAME 
 };
 
+
+struct buttonObj {
+	int posX, posY;
+	int width, height;
+	string button_name = "";
+	int func_id = 0;
+
+	bool hover = false;
+};
+
 struct globalVars {
 	struct {
 		CONST BOOL DEVELOPER_MODE = true; // Developer mode
@@ -30,21 +40,47 @@ struct globalVars {
 		RenderWindow *window;
 
 		struct {
+			RectangleShape background_box;
+		} Background;
+
+		struct {
 			Text logo_text_menu;
+
+			RectangleShape box_menu;
+			Text button_text;
 		} Menu;
+
+		Vector2i mouse_pos;
 	} RENDER_VARS;
 
 	struct {
 		Font f_arial;
+		Font f_EuropeCondensed;
 	} FontList;
 
 	struct {
 		struct {
+			Color background_color = Color(25, 25, 25, 255);
+		} Background;
+
+		struct {
 			Color logo_text_color = Color(250, 250, 250, 128);
+
+			Color box_menu_color = Color(255, 255, 255, 30);
+			Color box_menu_color_hovered = Color(255, 255, 255, 130);
+			Color button_text_color = Color(255, 255, 255, 122);
 		} Menu;
+
+
 	} ColorScheme;
 
 	
+	struct {
+		struct {
+			buttonObj objList[5];
+			int objNum = 0;
 
+		} Menu;
+	} objList;
 
 }; extern globalVars gVars;

@@ -8,6 +8,7 @@
 #include "Utils.h"
 #include "generalLoad.h"
 #include "render.h"
+#include "logic.h"
 
 using namespace std;
 // ~~~~~~~~~ [ Vars ] ~~~~~~~~~ //
@@ -18,8 +19,8 @@ void InitThread(); // Startup function
 int main() {
 	setlocale(LC_ALL, "ru");
 	InitThread();
-	while (true) {
-		cin.get();
+	while (gVars.GLOBAL_VARS.GAME_ON) {
+		Sleep(333);
 	}
 	return 0;
 }
@@ -37,5 +38,7 @@ void InitThread() {
 	loadGame::StartupLoadFast();
 	if (gVars.GLOBAL_SETTINGS.DEVELOPER_MODE) { Utilities::PrintLog("Запуск потока графики"); }
 	Utilities::FastThread(renderGame::generalThread);
+	if (gVars.GLOBAL_SETTINGS.DEVELOPER_MODE) { Utilities::PrintLog("Запуск потока логики"); }
+	Utilities::FastThread(logicGame::initLogic);
 
 }

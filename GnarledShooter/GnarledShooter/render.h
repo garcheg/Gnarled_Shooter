@@ -7,6 +7,7 @@
 #include "globalVars.h"
 #include "Utils.h"
 #include "generalLoad.h"
+#include "logic.h"
 
 namespace renderGame {
 	void generalThread();

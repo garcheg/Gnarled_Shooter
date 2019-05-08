@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="generalLoad.cpp" />
     <ClCompile Include="globalVars.cpp" />
+    <ClCompile Include="logic.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="render.cpp" />
     <ClCompile Include="Utils.cpp" />
@@ -28,6 +29,7 @@
   <ItemGroup>
     <ClInclude Include="generalLoad.h" />
     <ClInclude Include="globalVars.h" />
+    <ClInclude Include="logic.h" />
     <ClInclude Include="render.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
