@@ -20,6 +20,15 @@ void renderGame::generalThread() {
 					}
 				}
 			}
+			if (GetAsyncKeyState(VK_LBUTTON)) {
+				if (gVars.GLOBAL_VARS.gameActiveMode == MENU_SETTINGS) {
+					for (int obj = 0; obj < gVars.objList.Settings.sliderNum; obj++) {
+						if (gVars.objList.Settings.sliderList[obj].hovered) {
+							logicGame::pressGeneralSettingSlider(obj);
+						}
+					}
+				}
+			}
 
 		}
 
@@ -87,7 +96,7 @@ void renderGame::DrawSliderSettings() {
 		gVars.RENDER_VARS.Settings.Slider.slider_name.setFillColor(gVars.ColorScheme.Settings.Slider.text_color);
 
 		gVars.RENDER_VARS.window->draw(gVars.RENDER_VARS.Settings.Slider.slider_name);
-
+		//slider
 		gVars.RENDER_VARS.Settings.Slider.slider_line.setSize(Vector2f(gVars.objList.Settings.sliderList[obj].width - gVars.objList.Settings.sliderList[obj].slider_start_x, gVars.objList.Settings.sliderList[obj].height/4));
 		gVars.RENDER_VARS.Settings.Slider.slider_line.setPosition(Vector2f(gVars.objList.Settings.sliderList[obj].posX + gVars.objList.Settings.sliderList[obj].slider_start_x, gVars.objList.Settings.sliderList[obj].posY + (gVars.RENDER_VARS.Settings.Slider.slider_name.getLocalBounds().height)));
 		gVars.RENDER_VARS.Settings.Slider.slider_line.setFillColor(gVars.ColorScheme.Settings.Slider.line_slider);
@@ -101,7 +110,14 @@ void renderGame::DrawSliderSettings() {
 		int end_point_slider = (gVars.objList.Settings.sliderList[obj].width - gVars.objList.Settings.sliderList[obj].slider_start_x) + (gVars.objList.Settings.sliderList[obj].posX + gVars.objList.Settings.sliderList[obj].slider_start_x);
 		int size_point_slider = (end_point_slider - start_point_slider) * gVars.objList.Settings.sliderList[obj].currentValue;
 		start_point_slider += size_point_slider;
-		gVars.RENDER_VARS.Settings.Slider.slider_currentPoint.setPosition(Vector2f(start_point_slider - (POINTER_SIZE_X / 2), gVars.objList.Settings.sliderList[obj].posY + (gVars.RENDER_VARS.Settings.Slider.slider_name.getLocalBounds().height) - (POINTER_SIZE_Y / 2)));
+		gVars.RENDER_VARS.Settings.Slider.slider_currentPoint.setPosition(Vector2f(start_point_slider - (POINTER_SIZE_X / 2), gVars.objList.Settings.sliderList[obj].posY + (gVars.RENDER_VARS.Settings.Slider.slider_name.getLocalBounds().height) - (POINTER_SIZE_Y / 2) + 1));
+		
+		
+		gVars.objList.Settings.sliderList[obj].stPosX = gVars.objList.Settings.sliderList[obj].posX + gVars.objList.Settings.sliderList[obj].slider_start_x;
+		gVars.objList.Settings.sliderList[obj].stPosY = gVars.objList.Settings.sliderList[obj].posY + (gVars.RENDER_VARS.Settings.Slider.slider_name.getLocalBounds().height);
+		gVars.objList.Settings.sliderList[obj].endPosX = gVars.objList.Settings.sliderList[obj].stPosX + (gVars.objList.Settings.sliderList[obj].width - gVars.objList.Settings.sliderList[obj].slider_start_x);
+		gVars.objList.Settings.sliderList[obj].endPosY = gVars.objList.Settings.sliderList[obj].stPosY + (gVars.objList.Settings.sliderList[obj].height / 4);
+		
 		gVars.RENDER_VARS.window->draw(gVars.RENDER_VARS.Settings.Slider.slider_currentPoint);
 	}
 }

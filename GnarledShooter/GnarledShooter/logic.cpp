@@ -5,6 +5,7 @@ void logicGame::initLogic() {
 
 	while (gVars.GLOBAL_VARS.GAME_ON) {
 		if (gVars.GLOBAL_VARS.gameActiveMode == MENU) { logicGame::logicGeneralMenu(); }
+		if (gVars.GLOBAL_VARS.gameActiveMode == MENU_SETTINGS) { logicGame::logicGeneralSettings(); }
 		Sleep(10);
 	}
 }
@@ -17,9 +18,9 @@ void logicGame::Initialization() {
 
 	int slider_pos_X = (gVars.GLOBAL_SETTINGS.WINDOW_WIDTH / 2) - (gVars.RENDER_VARS.Settings.BOX_WIDTH / 2) + 50;
 
-	logicGame::addMenuSlider("tttest1", slider_pos_X, 200, 400, 15, 0, 90, 0.3);
-	logicGame::addMenuSlider("ttest1", slider_pos_X, 250, 400, 15, 0, 90, 0.7);
-	logicGame::addMenuSlider("test1", slider_pos_X, 300, 400, 15, 0, 90, 0.1);
+	logicGame::addMenuSlider("All sound", slider_pos_X, 200, 400, 15, 0, 90, 0.3);
+	logicGame::addMenuSlider("Effects", slider_pos_X, 250, 400, 15, 0, 90, 0.7);
+	logicGame::addMenuSlider("Music", slider_pos_X, 300, 400, 15, 0, 90, 0.1);
 
 }
 
@@ -82,4 +83,23 @@ void logicGame::pressGeneralMenuButton(int func_id) {
 			break;
 		}
 	}
+}
+
+void logicGame::logicGeneralSettings() {
+	for (int obj = 0; obj < gVars.objList.Settings.sliderNum; obj++) {
+		if (logicGame::checkPosRect(gVars.objList.Settings.sliderList[obj].stPosX, gVars.objList.Settings.sliderList[obj].stPosY-5, gVars.objList.Settings.sliderList[obj].endPosX, gVars.objList.Settings.sliderList[obj].endPosY+5, gVars.RENDER_VARS.mouse_pos.x, gVars.RENDER_VARS.mouse_pos.y)) {
+			gVars.objList.Settings.sliderList[obj].hovered = true;
+		}
+		else {
+			gVars.objList.Settings.sliderList[obj].hovered = false;
+		}
+	}
+}
+
+void logicGame::pressGeneralSettingSlider(int slider_id) {
+	int start_point_slider = gVars.objList.Settings.sliderList[slider_id].posX + gVars.objList.Settings.sliderList[slider_id].slider_start_x;
+	int end_point_slider = (gVars.objList.Settings.sliderList[slider_id].width - gVars.objList.Settings.sliderList[slider_id].slider_start_x) + (gVars.objList.Settings.sliderList[slider_id].posX + gVars.objList.Settings.sliderList[slider_id].slider_start_x);
+	int size_point_slider = (end_point_slider - start_point_slider);
+	int tmp = -(start_point_slider - gVars.RENDER_VARS.mouse_pos.x);
+	gVars.objList.Settings.sliderList[slider_id].currentValue = tmp / 310.f;
 }

@@ -20,6 +20,11 @@ struct sliderObj {
 	float currentValue;
 
 	int func_id;
+
+	int stPosX, stPosY; // slider
+	int endPosX, endPosY; // slider
+
+	bool hovered = false;
 };
 
 
@@ -106,7 +111,7 @@ struct globalVars {
 			struct {
 				Color text_color = Color(255, 255, 255, 128);
 				Color line_slider = Color(255, 255, 255, 90);
-				Color line_pointer = Color(255, 0, 255, 90);
+				Color line_pointer = Color(255, 255, 255, 110);
 			} Slider;
 		} Settings;
 
