@@ -17,7 +17,7 @@ void logicGame::Initialization() {
 }
 
 void logicGame::addMenuButton(string button_name, int func_id) {
-	CONST INT marginSpace = 175;
+	CONST INT marginSpace = 200;
 
 	CONST INT button_sizeX = 444;
 	CONST INT button_sizeY = 50;

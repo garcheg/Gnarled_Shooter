@@ -57,7 +57,7 @@ void renderGame::DrawGeneralMenu() {
 		gVars.RENDER_VARS.Menu.button_text.setFillColor(gVars.ColorScheme.Menu.button_text_color);
 		gVars.RENDER_VARS.Menu.button_text.setCharacterSize(32);
 		gVars.RENDER_VARS.Menu.button_text.setString(gVars.objList.Menu.objList[obj].button_name);
-		gVars.RENDER_VARS.Menu.button_text.setPosition((gVars.objList.Menu.objList[obj].posX + gVars.objList.Menu.objList[obj].width / 2) - gVars.RENDER_VARS.Menu.button_text.getLocalBounds().width / 2, gVars.objList.Menu.objList[obj].posY);
+		gVars.RENDER_VARS.Menu.button_text.setPosition((gVars.objList.Menu.objList[obj].posX + gVars.objList.Menu.objList[obj].width / 2) - gVars.RENDER_VARS.Menu.button_text.getLocalBounds().width / 2, gVars.objList.Menu.objList[obj].posY + 5);
 		gVars.RENDER_VARS.window->draw(gVars.RENDER_VARS.Menu.button_text);
 	}
 }//gVars.objList.Menu.objList[obj].width

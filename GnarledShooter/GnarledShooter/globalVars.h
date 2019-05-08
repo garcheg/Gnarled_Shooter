@@ -67,7 +67,7 @@ struct globalVars {
 			Color logo_text_color = Color(250, 250, 250, 128);
 
 			Color box_menu_color = Color(255, 255, 255, 30);
-			Color box_menu_color_hovered = Color(255, 255, 255, 130);
+			Color box_menu_color_hovered = Color(255, 255, 255, 80);
 			Color button_text_color = Color(255, 255, 255, 122);
 		} Menu;
 
