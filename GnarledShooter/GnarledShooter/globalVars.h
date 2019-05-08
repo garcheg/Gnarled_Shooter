@@ -8,6 +8,10 @@
 using namespace std;
 using namespace sf;
 
+enum gameActiveStyle {
+	MENU, GAME 
+};
+
 struct globalVars {
 	struct {
 		CONST BOOL DEVELOPER_MODE = true; // Developer mode
@@ -19,12 +23,17 @@ struct globalVars {
 
 	struct {
 		BOOL GAME_ON = true;
+
+		gameActiveStyle gameActiveMode;
 	} GLOBAL_VARS;
 
 	struct {
 		RenderWindow *window;
 	} RENDER_VARS;
 
+	struct {
+		Font f_arial;
+	} FontList;
 
 
 }; extern globalVars gVars;
