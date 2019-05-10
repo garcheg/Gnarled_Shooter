@@ -18,9 +18,9 @@ void logicGame::Initialization() {
 
 	int slider_pos_X = (gVars.GLOBAL_SETTINGS.WINDOW_WIDTH / 2) - (gVars.RENDER_VARS.Settings.BOX_WIDTH / 2) + 50;
 
-	logicGame::addMenuSlider("All sound", slider_pos_X, 200, 400, 15, 0, 90, 0.3);
-	logicGame::addMenuSlider("Effects", slider_pos_X, 250, 400, 15, 0, 90, 0.7);
-	logicGame::addMenuSlider("Music", slider_pos_X, 300, 400, 15, 0, 90, 0.1);
+	logicGame::addMenuSlider("All sound", slider_pos_X, 300, 400, 15, 0, 90, 0.3);
+	logicGame::addMenuSlider("Effects", slider_pos_X, 350, 400, 15, 0, 90, 0.7);
+	logicGame::addMenuSlider("Music", slider_pos_X, 400, 400, 15, 0, 90, 0.1);
 
 }
 
@@ -102,4 +102,5 @@ void logicGame::pressGeneralSettingSlider(int slider_id) {
 	int size_point_slider = (end_point_slider - start_point_slider);
 	int tmp = -(start_point_slider - gVars.RENDER_VARS.mouse_pos.x);
 	gVars.objList.Settings.sliderList[slider_id].currentValue = tmp / 310.f;
+
 }

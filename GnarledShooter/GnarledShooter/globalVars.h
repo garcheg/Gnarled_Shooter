@@ -68,7 +68,7 @@ struct globalVars {
 
 		struct {
 			CONST INT BOX_WIDTH = 480;
-			CONST INT BOX_HEIGHT = 480;
+			CONST INT BOX_HEIGHT = 300;
 
 			RectangleShape box_background;
 
@@ -80,6 +80,11 @@ struct globalVars {
 				RectangleShape slider_currentPoint;
 				
 			} Slider;
+			
+			struct {
+				Text button_text;
+				RectangleShape box;
+			} buttonBack;
 		} Settings;
 
 		Vector2i mouse_pos;
@@ -113,6 +118,11 @@ struct globalVars {
 				Color line_slider = Color(255, 255, 255, 90);
 				Color line_pointer = Color(255, 255, 255, 110);
 			} Slider;
+			struct {
+				Color box = Color(255, 255, 255, 90);
+				Color box_hovered = Color(255, 255, 255, 120);
+				Color text = Color(255, 255, 255, 40);
+			} buttonBack;
 		} Settings;
 
 
