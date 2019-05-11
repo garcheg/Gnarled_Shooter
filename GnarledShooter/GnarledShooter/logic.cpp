@@ -94,13 +94,24 @@ void logicGame::logicGeneralSettings() {
 			gVars.objList.Settings.sliderList[obj].hovered = false;
 		}
 	}
+
+
+	if (logicGame::checkPosRect((gVars.GLOBAL_SETTINGS.WINDOW_WIDTH / 2) - (gVars.RENDER_VARS.Settings.buttonBack.sizeX / 2), gVars.RENDER_VARS.Settings.buttonBack.posY, (gVars.GLOBAL_SETTINGS.WINDOW_WIDTH / 2) - (gVars.RENDER_VARS.Settings.buttonBack.sizeX / 2) + gVars.RENDER_VARS.Settings.buttonBack.sizeX, gVars.RENDER_VARS.Settings.buttonBack.posY + +gVars.RENDER_VARS.Settings.buttonBack.sizeY, gVars.RENDER_VARS.mouse_pos.x, gVars.RENDER_VARS.mouse_pos.y)) {
+		gVars.RENDER_VARS.Settings.buttonBack.hovered = true;
+	} else { gVars.RENDER_VARS.Settings.buttonBack.hovered = false; }
 }
 
 void logicGame::pressGeneralSettingSlider(int slider_id) {
 	int start_point_slider = gVars.objList.Settings.sliderList[slider_id].posX + gVars.objList.Settings.sliderList[slider_id].slider_start_x;
 	int end_point_slider = (gVars.objList.Settings.sliderList[slider_id].width - gVars.objList.Settings.sliderList[slider_id].slider_start_x) + (gVars.objList.Settings.sliderList[slider_id].posX + gVars.objList.Settings.sliderList[slider_id].slider_start_x);
 	int size_point_slider = (end_point_slider - start_point_slider);
-	int tmp = -(start_point_slider - gVars.RENDER_VARS.mouse_pos.x);
+	float tmp = -(start_point_slider - gVars.RENDER_VARS.mouse_pos.x);
+	if (tmp < 0.f) {
+		tmp = 0.f;
+	}
+	if (tmp > 310.f) {
+		tmp = 310.f;
+	}
 	gVars.objList.Settings.sliderList[slider_id].currentValue = tmp / 310.f;
 
 }

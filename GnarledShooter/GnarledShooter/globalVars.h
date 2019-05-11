@@ -84,6 +84,15 @@ struct globalVars {
 			struct {
 				Text button_text;
 				RectangleShape box;
+
+				string button_text_s = "Back";
+
+				int posY = 450;
+
+				int sizeX = 450;
+				int sizeY = 50;
+
+				bool hovered = false;
 			} buttonBack;
 		} Settings;
 
@@ -116,12 +125,12 @@ struct globalVars {
 			struct {
 				Color text_color = Color(255, 255, 255, 128);
 				Color line_slider = Color(255, 255, 255, 90);
-				Color line_pointer = Color(255, 255, 255, 110);
+				Color line_pointer = Color(255, 255, 255, 150);
 			} Slider;
 			struct {
-				Color box = Color(255, 255, 255, 90);
-				Color box_hovered = Color(255, 255, 255, 120);
-				Color text = Color(255, 255, 255, 40);
+				Color box = Color(255, 255, 255, 30);
+				Color box_hovered = Color(255, 255, 255, 50);
+				Color text = Color(255, 255, 255, 128);
 			} buttonBack;
 		} Settings;
 

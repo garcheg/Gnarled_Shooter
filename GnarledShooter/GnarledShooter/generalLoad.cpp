@@ -31,6 +31,10 @@ void loadGame::StartupLoadFast() {
 
 	gVars.RENDER_VARS.Settings.Slider.slider_name.setFont(gVars.FontList.f_EuropeCondensed);
 
+	gVars.RENDER_VARS.Settings.buttonBack.button_text.setFont(gVars.FontList.f_EuropeCondensed);
+	gVars.RENDER_VARS.Settings.buttonBack.button_text.setString(gVars.RENDER_VARS.Settings.buttonBack.button_text_s);
+	gVars.RENDER_VARS.Settings.buttonBack.button_text.setCharacterSize(gVars.RENDER_VARS.Settings.buttonBack.sizeY-10);
+
 }
 
 void loadGame::GameLoadNormal() {

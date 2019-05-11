@@ -27,6 +27,10 @@ void renderGame::generalThread() {
 							logicGame::pressGeneralSettingSlider(obj);
 						}
 					}
+
+					if (gVars.RENDER_VARS.Settings.buttonBack.hovered) {
+						gVars.GLOBAL_VARS.gameActiveMode = MENU;
+					}
 				}
 			}
 
@@ -83,6 +87,21 @@ void renderGame::DrawSettingsMenu() {
 	gVars.RENDER_VARS.window->draw(gVars.RENDER_VARS.Settings.WINDOW_NAME);
 
 	renderGame::DrawSliderSettings();
+	// button back
+	if (gVars.RENDER_VARS.Settings.buttonBack.hovered) {
+		gVars.RENDER_VARS.Settings.buttonBack.box.setFillColor(gVars.ColorScheme.Settings.buttonBack.box_hovered);
+	}
+	else {
+		gVars.RENDER_VARS.Settings.buttonBack.box.setFillColor(gVars.ColorScheme.Settings.buttonBack.box);
+	}
+
+	gVars.RENDER_VARS.Settings.buttonBack.box.setSize(Vector2f(gVars.RENDER_VARS.Settings.buttonBack.sizeX, gVars.RENDER_VARS.Settings.buttonBack.sizeY));
+	gVars.RENDER_VARS.Settings.buttonBack.box.setPosition(Vector2f(((gVars.GLOBAL_SETTINGS.WINDOW_WIDTH / 2)) - (gVars.RENDER_VARS.Settings.buttonBack.sizeX / 2), gVars.RENDER_VARS.Settings.buttonBack.posY));
+	gVars.RENDER_VARS.window->draw(gVars.RENDER_VARS.Settings.buttonBack.box);
+
+	gVars.RENDER_VARS.Settings.buttonBack.button_text.setFillColor(gVars.ColorScheme.Settings.buttonBack.text);
+	gVars.RENDER_VARS.Settings.buttonBack.button_text.setPosition(Vector2f((gVars.GLOBAL_SETTINGS.WINDOW_WIDTH / 2) - (gVars.RENDER_VARS.Settings.buttonBack.button_text.getLocalBounds().width / 2), gVars.RENDER_VARS.Settings.buttonBack.posY));
+	gVars.RENDER_VARS.window->draw(gVars.RENDER_VARS.Settings.buttonBack.button_text);
 }
 
 void renderGame::DrawSliderSettings() {
