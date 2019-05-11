@@ -44,6 +44,7 @@ void renderGame::generalThread() {
 
 		if (gVars.GLOBAL_VARS.gameActiveMode == MENU) { renderGame::DrawGeneralMenu(); }
 		if (gVars.GLOBAL_VARS.gameActiveMode == MENU_SETTINGS) { renderGame::DrawSettingsMenu(); }
+		if (gVars.GLOBAL_VARS.gameActiveMode == GAME) { renderGame::DrawGame(); }
 		gVars.RENDER_VARS.window->display();
 	}
 }
@@ -140,5 +141,7 @@ void renderGame::DrawSliderSettings() {
 		gVars.RENDER_VARS.window->draw(gVars.RENDER_VARS.Settings.Slider.slider_currentPoint);
 	}
 }
-//gVars.objList.Settings.sliderList[obj].posX + gVars.objList.Settings.sliderList[obj].slider_start_x        // start
-// (gVars.objList.Settings.sliderList[obj].width - (gVars.objList.Settings.sliderList[obj].posX + gVars.objList.Settings.sliderList[obj].slider_start_x)) + 
+
+void renderGame::DrawGame() {
+
+}

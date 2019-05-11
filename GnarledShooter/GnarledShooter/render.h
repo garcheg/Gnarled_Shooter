@@ -15,4 +15,5 @@ namespace renderGame {
 	void DrawGeneralMenu();
 	void DrawSettingsMenu();
 	void DrawSliderSettings();
+	void DrawGame();
 }

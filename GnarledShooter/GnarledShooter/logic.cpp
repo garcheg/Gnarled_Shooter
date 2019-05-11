@@ -11,8 +11,7 @@ void logicGame::initLogic() {
 }
 
 void logicGame::Initialization() {
-	logicGame::addMenuButton("NEW GAME", 0);
-	logicGame::addMenuButton("LOAD GAME", 1);
+	logicGame::addMenuButton("START GAME", 0);
 	logicGame::addMenuButton("SETTINGS", 2);
 	logicGame::addMenuButton("EXIT", 3);
 
@@ -74,6 +73,11 @@ void logicGame::logicGeneralMenu() {
 
 void logicGame::pressGeneralMenuButton(int func_id) {
 	switch (func_id) {
+		case 0: {
+			loadGame::GameLoadNormal();
+			gVars.GLOBAL_VARS.gameActiveMode = GAME;
+			break;
+		}
 		case 2: {
 			gVars.GLOBAL_VARS.gameActiveMode = MENU_SETTINGS;
 			break;

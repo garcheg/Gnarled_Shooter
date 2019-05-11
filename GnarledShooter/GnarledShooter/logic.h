@@ -5,6 +5,7 @@
 #include <string>
 
 #include "globalVars.h"
+#include "generalLoad.h"
 
 using namespace std;
 using namespace sf;

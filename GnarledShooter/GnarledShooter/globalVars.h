@@ -89,7 +89,7 @@ struct globalVars {
 
 				int posY = 450;
 
-				int sizeX = 450;
+				int sizeX = 470;
 				int sizeY = 50;
 
 				bool hovered = false;
