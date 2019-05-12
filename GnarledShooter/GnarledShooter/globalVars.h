@@ -151,4 +151,9 @@ struct globalVars {
 		} Settings;
 	} objList;
 
+	struct {
+			Texture texture;
+			Sprite sprite;
+	} Games;
+
 }; extern globalVars gVars;

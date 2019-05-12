@@ -143,5 +143,9 @@ void renderGame::DrawSliderSettings() {
 }
 
 void renderGame::DrawGame() {
+	if (!gVars.Games.texture.loadFromFile("images/fang.png"))
+	{
+		std::cout << "Error load texture!" << endl;
+	}
 
 }
