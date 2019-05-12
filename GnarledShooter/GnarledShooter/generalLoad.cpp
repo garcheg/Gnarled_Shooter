@@ -14,6 +14,16 @@ void loadGame::StartupLoadFast() {
 		gVars.GLOBAL_VARS.GAME_ON = false;
 	}
 
+	if (!gVars.Games.texture.loadFromFile("images/fang.png"))
+	{
+		Utilities::PrintError("Error load texture!");
+		gVars.GLOBAL_VARS.GAME_ON = false;
+	}
+	else
+	{
+		Utilities::PrintLog("Textures loaded!");
+	}
+
 	gVars.RENDER_VARS.Menu.logo_text_menu.setFont(gVars.FontList.f_arial);
 	gVars.RENDER_VARS.Menu.logo_text_menu.setString(gVars.GLOBAL_SETTINGS.WINDOW_NAME);
 	gVars.RENDER_VARS.Menu.logo_text_menu.setCharacterSize(42);
