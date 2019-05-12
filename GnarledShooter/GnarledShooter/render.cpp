@@ -1,4 +1,7 @@
+
 #include "render.h"
+
+
 
 void renderGame::generalThread() {
 	renderGame::Initialization();
@@ -143,9 +146,10 @@ void renderGame::DrawSliderSettings() {
 }
 
 void renderGame::DrawGame() {
-	if (!gVars.Games.texture.loadFromFile("images/fang.png"))
-	{
-		std::cout << "Error load texture!" << endl;
-	}
+	gVars.Games.image.loadFromFile("images/fang.png"); // Загрузка картинки 
+	gVars.Games.texture.loadFromImage(gVars.Games.image); // Загрука текстур
+	gVars.Games.image.~Image();
+	gVars.Games.sprite.setTexture(gVars.Games.texture); // Загрузка спрайта
+}	
 
-}
+

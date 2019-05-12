@@ -152,6 +152,7 @@ struct globalVars {
 	} objList;
 
 	struct {
+			Image image;
 			Texture texture;
 			Sprite sprite;
 	} Games;
