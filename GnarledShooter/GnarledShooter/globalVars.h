@@ -157,4 +157,9 @@ struct globalVars {
 			Sprite sprite;
 	} Games;
 
+	struct {
+		int currentframe = 0;
+	} Animation;
+
+
 }; extern globalVars gVars;

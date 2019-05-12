@@ -150,6 +150,34 @@ void renderGame::DrawGame() {
 	gVars.Games.texture.loadFromImage(gVars.Games.image); // Загрука текстур
 	gVars.Games.image.~Image();
 	gVars.Games.sprite.setTexture(gVars.Games.texture); // Загрузка спрайта
+
+	gVars.Games.sprite.setTextureRect(IntRect(40, 190, 39, 54));
+	
+	if (Keyboard::isKeyPressed(Keyboard::Left)) { 
+		gVars.Games.sprite.move(-5, 0); 
+	}
+	
+	if (Keyboard::isKeyPressed(Keyboard::Right)) { 
+		gVars.Games.sprite.move(5, 0); 
+		gVars.Animation.currentframe += 0.005;
+		if (gVars.Animation.currentframe > 6) gVars.Animation.currentframe -= 6;
+		gVars.Games.sprite.setTextureRect(IntRect(40 * int(gVars.Animation.currentframe), 243, 39, 54));
+	}
+
+
+	if (Keyboard::isKeyPressed(Keyboard::Up)) { gVars.Games.sprite.move(0, -5); }
+	if (Keyboard::isKeyPressed(Keyboard::Down)) { gVars.Games.sprite.move(0, 5); }
+
+	gVars.RENDER_VARS.window->draw(gVars.Games.sprite);
 }	
 
+//void renderGame::InputKey() {
+//	if (Keyboard::isKeyPressed(Keyboard::Left))
+//	{
+//		gVars.Games.sprite.move(0, -0.1);
+//	}
+//
+//	gVars.RENDER_VARS.window->draw(gVars.Games.sprite);
+//}
+  
 

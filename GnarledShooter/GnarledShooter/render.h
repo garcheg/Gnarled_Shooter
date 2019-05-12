@@ -16,4 +16,5 @@ namespace renderGame {
 	void DrawSettingsMenu();
 	void DrawSliderSettings();
 	void DrawGame();
+	void InputKey();
 }
