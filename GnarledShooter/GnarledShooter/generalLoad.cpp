@@ -40,6 +40,10 @@ void loadGame::StartupLoadFast() {
 }
 
 void loadGame::GameLoadNormal() {
+	gVars.FrameCounter.fps_text.setFont(gVars.FontList.f_EuropeCondensed);
+	gVars.FrameCounter.fps_text.setFillColor(Color(255, 255, 255, 120));
+	gVars.FrameCounter.fps_text.setPosition(Vector2f(10, 10));
+
 	if (!gVars.Games.texture.loadFromFile("images/fang.png"))
 	{
 		Utilities::PrintError("Erorr load textures!");

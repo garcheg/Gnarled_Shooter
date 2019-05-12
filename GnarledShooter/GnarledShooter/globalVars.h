@@ -157,4 +157,14 @@ struct globalVars {
 			Sprite sprite;
 	} Games;
 
+	struct {
+		int fps = 0;
+		int frame_num = 0;
+
+		int last_time = 0;
+
+		Text fps_text;
+
+	} FrameCounter;
+
 }; extern globalVars gVars;

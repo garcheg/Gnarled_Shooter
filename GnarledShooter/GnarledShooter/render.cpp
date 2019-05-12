@@ -150,6 +150,21 @@ void renderGame::DrawGame() {
 	gVars.Games.texture.loadFromImage(gVars.Games.image); // Загрука текстур
 	gVars.Games.image.~Image();
 	gVars.Games.sprite.setTexture(gVars.Games.texture); // Загрузка спрайта
+
+
+
+	// frame counter
+	if (gVars.FrameCounter.last_time == time(NULL)) {
+		gVars.FrameCounter.frame_num++;
+	}
+	else {
+		gVars.FrameCounter.last_time = time(NULL);
+		gVars.FrameCounter.fps = gVars.FrameCounter.frame_num;
+		gVars.FrameCounter.frame_num = 0;
+	}
+
+	gVars.FrameCounter.fps_text.setString("FPS: " + to_string(gVars.FrameCounter.fps));
+	gVars.RENDER_VARS.window->draw(gVars.FrameCounter.fps_text);
 }	
 
 

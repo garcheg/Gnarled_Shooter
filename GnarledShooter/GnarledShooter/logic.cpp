@@ -117,5 +117,4 @@ void logicGame::pressGeneralSettingSlider(int slider_id) {
 		tmp = 310.f;
 	}
 	gVars.objList.Settings.sliderList[slider_id].currentValue = tmp / 310.f;
-
 }
