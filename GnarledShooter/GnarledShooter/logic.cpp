@@ -109,7 +109,7 @@ void logicGame::pressGeneralSettingSlider(int slider_id) {
 	int start_point_slider = gVars.objList.Settings.sliderList[slider_id].posX + gVars.objList.Settings.sliderList[slider_id].slider_start_x;
 	int end_point_slider = (gVars.objList.Settings.sliderList[slider_id].width - gVars.objList.Settings.sliderList[slider_id].slider_start_x) + (gVars.objList.Settings.sliderList[slider_id].posX + gVars.objList.Settings.sliderList[slider_id].slider_start_x);
 	int size_point_slider = (end_point_slider - start_point_slider);
-	float tmp = -(start_point_slider - gVars.RENDER_VARS.mouse_pos.x);
+	double tmp = -(start_point_slider - gVars.RENDER_VARS.mouse_pos.x);
 	if (tmp < 0.f) {
 		tmp = 0.f;
 	}
