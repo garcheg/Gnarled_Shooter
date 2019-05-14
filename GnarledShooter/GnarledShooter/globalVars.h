@@ -158,13 +158,8 @@ struct globalVars {
 	} Games;
 
 	struct {
-		int fps = 0;
-		int frame_num = 0;
+		int currentframe = 0;
+	} Animation;
 
-		int last_time = 0;
-
-		Text fps_text;
-
-	} FrameCounter;
 
 }; extern globalVars gVars;

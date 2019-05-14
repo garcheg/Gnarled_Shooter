@@ -151,20 +151,33 @@ void renderGame::DrawGame() {
 	gVars.Games.image.~Image();
 	gVars.Games.sprite.setTexture(gVars.Games.texture); // Загрузка спрайта
 
-
-
-	// frame counter
-	if (gVars.FrameCounter.last_time == time(NULL)) {
-		gVars.FrameCounter.frame_num++;
+	gVars.Games.sprite.setTextureRect(IntRect(40, 190, 39, 54));
+	
+	if (Keyboard::isKeyPressed(Keyboard::Left)) { 
+		gVars.Games.sprite.move(-5, 0); 
 	}
-	else {
-		gVars.FrameCounter.last_time = time(NULL);
-		gVars.FrameCounter.fps = gVars.FrameCounter.frame_num;
-		gVars.FrameCounter.frame_num = 0;
+	
+	if (Keyboard::isKeyPressed(Keyboard::Right)) { 
+		gVars.Games.sprite.move(5, 0); 
+		gVars.Animation.currentframe += 0.005;
+		if (gVars.Animation.currentframe > 6) gVars.Animation.currentframe -= 6;
+		gVars.Games.sprite.setTextureRect(IntRect(40 * int(gVars.Animation.currentframe), 243, 39, 54));
 	}
 
-	gVars.FrameCounter.fps_text.setString("FPS: " + to_string(gVars.FrameCounter.fps));
-	gVars.RENDER_VARS.window->draw(gVars.FrameCounter.fps_text);
+
+	if (Keyboard::isKeyPressed(Keyboard::Up)) { gVars.Games.sprite.move(0, -5); }
+	if (Keyboard::isKeyPressed(Keyboard::Down)) { gVars.Games.sprite.move(0, 5); }
+
+	gVars.RENDER_VARS.window->draw(gVars.Games.sprite);
 }	
 
+//void renderGame::InputKey() {
+//	if (Keyboard::isKeyPressed(Keyboard::Left))
+//	{
+//		gVars.Games.sprite.move(0, -0.1);
+//	}
+//
+//	gVars.RENDER_VARS.window->draw(gVars.Games.sprite);
+//}
+  
 
