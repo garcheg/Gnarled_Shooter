@@ -164,8 +164,8 @@ void renderGame::DrawGame() {
 
 	player_box.setFillColor(Color(255, 255, 255, 120));
 	player_box.setPosition(g_player.getPos().x, g_player.getPos().y);
-	player_box.setSize(Vector2f(30, 30));
-	player_box.setOrigin(30 / 2, 30 / 2);
+	player_box.setSize(Vector2f(g_player.getSize().x, g_player.getSize().y));
+	player_box.setOrigin(g_player.getSize().x / 2, g_player.getSize().y / 2);
 	
 
 	float dX = g_player.getPos().x -gVars.RENDER_VARS.mouse_pos.x;
