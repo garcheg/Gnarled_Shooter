@@ -77,6 +77,7 @@ void logicGame::pressGeneralMenuButton(int func_id) {
 		case 0: {
 			loadGame::GameLoadNormal();
 			gVars.GLOBAL_VARS.gameActiveMode = GAME;
+			gVars.MusicaGame.music.setVolume(15.f);
 			gVars.MusicaGame.music.play(); // “”“ Ã”«€ ¿!
 			
 			break;
