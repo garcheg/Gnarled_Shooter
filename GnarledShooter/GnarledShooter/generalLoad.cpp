@@ -37,21 +37,17 @@ void loadGame::StartupLoadFast() {
 	gVars.RENDER_VARS.Settings.buttonBack.button_text.setString(gVars.RENDER_VARS.Settings.buttonBack.button_text_s);
 	gVars.RENDER_VARS.Settings.buttonBack.button_text.setCharacterSize(gVars.RENDER_VARS.Settings.buttonBack.sizeY-10);
 
+	gVars.FrameCounter.fps_text.setFont(gVars.FontList.f_EuropeCondensed);
+	gVars.FrameCounter.fps_text.setFillColor(Color(255, 255, 255, 160));
+	gVars.FrameCounter.fps_text.setPosition(10, 10);
+	gVars.FrameCounter.fps_text.setCharacterSize(22);
+
+
 }
 
 void loadGame::GameLoadNormal() {
-	gVars.FrameCounter.fps_text.setFont(gVars.FontList.f_EuropeCondensed);
-	gVars.FrameCounter.fps_text.setFillColor(Color(255, 255, 255, 120));
-	gVars.FrameCounter.fps_text.setPosition(Vector2f(10, 10));
+	// Load sprite player
 
-	if (!gVars.Games.texture.loadFromFile("images/fang.png"))
-	{
-		Utilities::PrintError("Erorr load textures!");
-		gVars.GLOBAL_VARS.GAME_ON = false;
-	}
-	else
-	{
-		Utilities::PrintLog("Textures loaded!");
-	}
+	
 
 }

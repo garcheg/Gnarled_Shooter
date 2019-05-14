@@ -7,6 +7,42 @@
 using namespace std;
 using namespace sf;
 
+class GameCamera {
+public:
+	GameCamera() {
+		c_pos.x = 0;
+		c_pos.y = 0;
+
+		c_dist = 1.0f;
+	}
+
+	Vector2f getPos() {
+		return c_pos;
+	}
+
+	float getDist() {
+		return c_dist;
+	}
+
+	void addDist(float num) {
+		c_dist += num;
+	}
+
+	void delDist(float num) {
+		c_dist -= num;
+	}
+
+	void setPos(Vector2f tmp_pos) {
+		c_pos.x = tmp_pos.x;
+		c_pos.y = tmp_pos.y;
+	}
+private:
+	Vector2f c_pos;
+	float c_dist;
+};
+
+extern GameCamera g_camera;
+
 enum gameActiveStyle {
 	MENU, MENU_SETTINGS, GAME 
 };
@@ -151,15 +187,19 @@ struct globalVars {
 		} Settings;
 	} objList;
 
-	struct {
-			Image image;
-			Texture texture;
-			Sprite sprite;
-	} Games;
+
 
 	struct {
 		int currentframe = 0;
 	} Animation;
+
+	struct {
+		int lastTime = 0;
+		int renderedFrame = 0;
+		int current_fps = 0;
+
+		Text fps_text;
+	} FrameCounter;
 
 
 }; extern globalVars gVars;

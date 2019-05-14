@@ -1,7 +1,4 @@
-
 #include "render.h"
-
-
 
 void renderGame::generalThread() {
 	renderGame::Initialization();
@@ -48,8 +45,25 @@ void renderGame::generalThread() {
 		if (gVars.GLOBAL_VARS.gameActiveMode == MENU) { renderGame::DrawGeneralMenu(); }
 		if (gVars.GLOBAL_VARS.gameActiveMode == MENU_SETTINGS) { renderGame::DrawSettingsMenu(); }
 		if (gVars.GLOBAL_VARS.gameActiveMode == GAME) { renderGame::DrawGame(); }
+
+		if (gVars.GLOBAL_SETTINGS.DEVELOPER_MODE) {
+			renderGame::fpsCounter();
+		}
 		gVars.RENDER_VARS.window->display();
 	}
+}
+
+void renderGame::fpsCounter() {
+	if (time(NULL) == gVars.FrameCounter.lastTime) {
+		gVars.FrameCounter.renderedFrame++;
+	}
+	else {
+		gVars.FrameCounter.lastTime = time(NULL);
+		gVars.FrameCounter.current_fps = gVars.FrameCounter.renderedFrame;
+		gVars.FrameCounter.renderedFrame = 0;
+	}
+	gVars.FrameCounter.fps_text.setString("FPS: " + to_string(gVars.FrameCounter.current_fps));
+	gVars.RENDER_VARS.window->draw(gVars.FrameCounter.fps_text);
 }
 
 void renderGame::Initialization() {
@@ -146,38 +160,5 @@ void renderGame::DrawSliderSettings() {
 }
 
 void renderGame::DrawGame() {
-	gVars.Games.image.loadFromFile("images/fang.png"); // Загрузка картинки 
-	gVars.Games.texture.loadFromImage(gVars.Games.image); // Загрука текстур
-	gVars.Games.image.~Image();
-	gVars.Games.sprite.setTexture(gVars.Games.texture); // Загрузка спрайта
-
-	gVars.Games.sprite.setTextureRect(IntRect(40, 190, 39, 54));
 	
-	if (Keyboard::isKeyPressed(Keyboard::Left)) { 
-		gVars.Games.sprite.move(-5, 0); 
-	}
-	
-	if (Keyboard::isKeyPressed(Keyboard::Right)) { 
-		gVars.Games.sprite.move(5, 0); 
-		gVars.Animation.currentframe += 0.005;
-		if (gVars.Animation.currentframe > 6) gVars.Animation.currentframe -= 6;
-		gVars.Games.sprite.setTextureRect(IntRect(40 * int(gVars.Animation.currentframe), 243, 39, 54));
-	}
-
-
-	if (Keyboard::isKeyPressed(Keyboard::Up)) { gVars.Games.sprite.move(0, -5); }
-	if (Keyboard::isKeyPressed(Keyboard::Down)) { gVars.Games.sprite.move(0, 5); }
-
-	gVars.RENDER_VARS.window->draw(gVars.Games.sprite);
 }	
-
-//void renderGame::InputKey() {
-//	if (Keyboard::isKeyPressed(Keyboard::Left))
-//	{
-//		gVars.Games.sprite.move(0, -0.1);
-//	}
-//
-//	gVars.RENDER_VARS.window->draw(gVars.Games.sprite);
-//}
-  
-
