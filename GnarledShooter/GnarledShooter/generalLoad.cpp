@@ -51,7 +51,7 @@ void loadGame::GameLoadNormal() {
 	g_map.grass.textr.loadFromImage(g_map.grass.img);
 	g_map.grass.sprite.setTexture(g_map.grass.textr);
 	
-
+	loadGame::MusicLoadNormal();
 }
 
 void loadGame::MusicLoadNormal() {

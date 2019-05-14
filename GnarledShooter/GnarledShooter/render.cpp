@@ -160,7 +160,6 @@ void renderGame::DrawSliderSettings() {
 }
 RectangleShape player_box;
 void renderGame::DrawGame() {
-	gVars.MusicaGame.music.play(); // “”“ Ã”«€ ¿!
 	g_camera.setPos(g_player.getPos());
 
 	Vector2f camera_bias = g_camera.getPos();
