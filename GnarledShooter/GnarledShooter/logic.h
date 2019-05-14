@@ -21,4 +21,5 @@ namespace logicGame {
 	void logicGeneralSettings();
 	void pressGeneralSettingSlider(int slider_id);
 	void logicKeys();
+	void mlsc50Thread();
 }

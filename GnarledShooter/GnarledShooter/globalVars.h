@@ -13,6 +13,11 @@ enum gameActiveStyle {
 	MENU, MENU_SETTINGS, GAME 
 };
 
+enum playerStateList {
+	STOP = 0,
+	ATTACK
+};
+
 struct sliderObj {
 	string slider_name = "";
 	int posX, posY;
@@ -243,14 +248,36 @@ extern GameCamera g_camera;
 class GamePlayer {
 public:
 	GamePlayer (){
-		pl_Size.x = 30;
-		pl_Size.y = 30;
+		pl_Size.x = 210/2;
+		pl_Size.y = 176/2;
 
 		pl_Pos.x = g_map.getSpawnPos().x;
 		pl_Pos.y = g_map.getSpawnPos().y;
-
-
 	}
+
+	void key_attack() {
+		pl_State = ATTACK;
+		animationID = 0;
+	}
+
+	void updatePlayer() {
+		switch (pl_State) {
+			case STOP: {
+
+				break;
+			}
+
+			case ATTACK: {
+				if (animationID >= 6) {
+					pl_State = STOP;
+					animationID = 0;
+				}
+				animationID++;
+				break;
+			}
+		}
+	}
+
 
 	Vector2f getPos() {
 		return pl_Pos;
@@ -274,12 +301,120 @@ public:
 	void moveRight() {
 		pl_Pos.x += player_speed;
 	}
+
+	IntRect getSpritePos() {
+		IntRect tmp;
+
+		switch (pl_State) {
+			case STOP: {
+				tmp.left = 340;
+				tmp.top = 320;
+				tmp.width = 100;
+				tmp.height = 100;
+
+				pl_PosOffset.x = 60;
+				pl_PosOffset.y = 10;
+				break;
+			}
+
+			case ATTACK: {
+				switch (animationID) {
+					case 0: {
+						tmp.top = 780;
+						tmp.left = 0;
+						tmp.width = 135;
+						tmp.height = 100;
+
+						pl_PosOffset.x = 65;
+						pl_PosOffset.y = -15;
+						break;
+					}
+					case 1: {
+						tmp.top = 553;
+						tmp.left = 0;
+						tmp.width = 152;
+						tmp.height = 150;
+
+						pl_PosOffset.x = 65;
+						pl_PosOffset.y = -10;
+						break;
+					}
+					case 2: {
+						tmp.top = 364;
+						tmp.left = 0;
+						tmp.width = 170;
+						tmp.height = 176;
+
+						pl_PosOffset.x = 45;
+						pl_PosOffset.y = -45;
+						break;
+					}
+					case 3: {
+						tmp.top = 184;
+						tmp.left = 0;
+						tmp.width = 210;
+						tmp.height = 148;
+
+						pl_PosOffset.x = 5;
+						pl_PosOffset.y = -45;
+						break;
+					}
+					case 4: {
+						tmp.top = 0;
+						tmp.left = 0;
+						tmp.width = 180;
+						tmp.height = 160;
+
+						pl_PosOffset.x = 5;
+						pl_PosOffset.y = -45;
+						break;
+					}
+					case 5: {
+						tmp.top = 0;
+						tmp.left = 215;
+						tmp.width = 128;
+						tmp.height = 160;
+
+						pl_PosOffset.x = 5;
+						pl_PosOffset.y = -40;
+						break;
+					}
+
+
+					case 6: {
+						tmp.top = 208;
+						tmp.left = 215;
+						tmp.width = 128;
+						tmp.height = 120;
+
+						pl_PosOffset.x = 0;
+						pl_PosOffset.y = 0;
+						break;
+					}
+				}
+				break;
+			}
+		}
+
+		return tmp;
+
+	}
+
+	//vars
 	Vector2f pl_Size;
+	objRender player_sprite;
+	Vector2f pl_PosOffset;
 private:
 	Vector2f pl_Pos;
 
+	playerStateList pl_State;
+
+	int animationID = 0;
 
 	float player_speed = 2;
+
+
 };
 
 extern GamePlayer g_player;
+

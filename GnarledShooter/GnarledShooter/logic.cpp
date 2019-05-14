@@ -2,12 +2,19 @@
 
 void logicGame::initLogic() {
 	logicGame::Initialization();
-
+	Utilities::FastThread(logicGame::mlsc50Thread);
 	while (gVars.GLOBAL_VARS.GAME_ON) {
 		if (gVars.GLOBAL_VARS.gameActiveMode == MENU) { logicGame::logicGeneralMenu(); }
 		if (gVars.GLOBAL_VARS.gameActiveMode == MENU_SETTINGS) { logicGame::logicGeneralSettings(); }
 		logicGame::logicKeys();
 		Sleep(10);
+	}
+}
+
+void logicGame::mlsc50Thread() {
+	while (gVars.GLOBAL_VARS.GAME_ON) {
+		g_player.updatePlayer();
+		Sleep(50);
 	}
 }
 
@@ -78,7 +85,7 @@ void logicGame::pressGeneralMenuButton(int func_id) {
 			loadGame::GameLoadNormal();
 			gVars.GLOBAL_VARS.gameActiveMode = GAME;
 			gVars.MusicaGame.music.setVolume(15.f);
-			gVars.MusicaGame.music.play(); // “”“ Ã”«€ ¿!
+			//gVars.MusicaGame.music.play(); // “”“ Ã”«€ ¿!
 			break;
 		}
 		case 2: {

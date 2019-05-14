@@ -19,6 +19,8 @@ void renderGame::generalThread() {
 						}
 					}
 				}
+
+				if (gVars.GLOBAL_VARS.gameActiveMode == GAME) { g_player.key_attack(); }
 			}
 			if (GetAsyncKeyState(VK_LBUTTON)) {
 				if (gVars.GLOBAL_VARS.gameActiveMode == MENU_SETTINGS) {
@@ -180,20 +182,23 @@ void renderGame::DrawGame() {
 		}
 	}
 	// draw player
-
-	player_box.setFillColor(Color(255, 255, 255, 120));
-	player_box.setPosition((gVars.GLOBAL_SETTINGS.WINDOW_WIDTH / 2) - (g_player.pl_Size.x / 2), (gVars.GLOBAL_SETTINGS.WINDOW_HEIGHT / 2) - (g_player.pl_Size.y / 2));
-	player_box.setSize(Vector2f(g_player.getSize().x, g_player.getSize().y));
-	player_box.setOrigin(g_player.getSize().x / 2, g_player.getSize().y / 2);
-	
-
 	float dX = (gVars.GLOBAL_SETTINGS.WINDOW_WIDTH / 2) - gVars.RENDER_VARS.mouse_pos.x;
 	float dY = (gVars.GLOBAL_SETTINGS.WINDOW_HEIGHT / 2) - gVars.RENDER_VARS.mouse_pos.y;
 	float rotation = (atan2(dY, dX)) * 180 / 3.14159265;
+	g_player.player_sprite.sprite.setRotation(rotation + -90.f);
+	g_player.player_sprite.sprite.setPosition(((gVars.GLOBAL_SETTINGS.WINDOW_WIDTH / 2) - (g_player.pl_Size.x / 2)) + g_player.pl_PosOffset.x, ((gVars.GLOBAL_SETTINGS.WINDOW_HEIGHT / 2) - (g_player.pl_Size.y / 2)) + g_player.pl_PosOffset.y);
+	g_player.player_sprite.sprite.setOrigin(g_player.getSize().x / 2, g_player.getSize().y / 2);
+	g_player.player_sprite.sprite.setTextureRect(g_player.getSpritePos());
+	gVars.RENDER_VARS.window->draw(g_player.player_sprite.sprite);
 
 
-	player_box.setRotation(rotation);
-	gVars.RENDER_VARS.window->draw(player_box);
+
+
+	RectangleShape tmp;
+	tmp.setFillColor(Color(25, 25, 25, 120));
+	tmp.setPosition((gVars.GLOBAL_SETTINGS.WINDOW_WIDTH / 2) - (10 / 2), (gVars.GLOBAL_SETTINGS.WINDOW_HEIGHT / 2) - (10 / 2));
+	tmp.setSize(Vector2f(10, 10));
+	gVars.RENDER_VARS.window->draw(tmp);
 }	
 // 430x60 grass
 

@@ -47,10 +47,22 @@ void loadGame::StartupLoadFast() {
 
 void loadGame::GameLoadNormal() {
 	// Load sprite map
-	g_map.grass.img.loadFromFile("images/map_sprite.png");
+	if (!g_map.grass.img.loadFromFile("images/map_sprite.png")) {
+		Utilities::PrintError("Error load file 'map_sprite.png' !");
+		gVars.GLOBAL_VARS.GAME_ON = false;
+	}
 	g_map.grass.textr.loadFromImage(g_map.grass.img);
 	g_map.grass.sprite.setTexture(g_map.grass.textr);
-	
+
+	// load sprite player
+	if (!g_player.player_sprite.img.loadFromFile("images/player_sprite.png")) {
+		Utilities::PrintError("Error load file 'player_sprite.png' !");
+		gVars.GLOBAL_VARS.GAME_ON = false;
+	}
+
+	g_player.player_sprite.textr.loadFromImage(g_player.player_sprite.img);
+	g_player.player_sprite.sprite.setTexture(g_player.player_sprite.textr);
+
 	loadGame::MusicLoadNormal();
 }
 
