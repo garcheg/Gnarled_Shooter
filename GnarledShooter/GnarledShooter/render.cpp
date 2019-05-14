@@ -187,8 +187,8 @@ void renderGame::DrawGame() {
 	player_box.setOrigin(g_player.getSize().x / 2, g_player.getSize().y / 2);
 	
 
-	float dX = g_player.getPos().x -gVars.RENDER_VARS.mouse_pos.x;
-	float dY = g_player.getPos().y -gVars.RENDER_VARS.mouse_pos.y;
+	float dX = (gVars.GLOBAL_SETTINGS.WINDOW_WIDTH / 2) - gVars.RENDER_VARS.mouse_pos.x;
+	float dY = (gVars.GLOBAL_SETTINGS.WINDOW_HEIGHT / 2) - gVars.RENDER_VARS.mouse_pos.y;
 	float rotation = (atan2(dY, dX)) * 180 / 3.14159265;
 
 
