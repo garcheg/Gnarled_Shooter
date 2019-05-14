@@ -1,7 +1,4 @@
-
 #include "render.h"
-
-
 
 void renderGame::generalThread() {
 	renderGame::Initialization();
@@ -48,13 +45,29 @@ void renderGame::generalThread() {
 		if (gVars.GLOBAL_VARS.gameActiveMode == MENU) { renderGame::DrawGeneralMenu(); }
 		if (gVars.GLOBAL_VARS.gameActiveMode == MENU_SETTINGS) { renderGame::DrawSettingsMenu(); }
 		if (gVars.GLOBAL_VARS.gameActiveMode == GAME) { renderGame::DrawGame(); }
+
+		if (gVars.GLOBAL_SETTINGS.DEVELOPER_MODE) {
+			renderGame::fpsCounter();
+		}
 		gVars.RENDER_VARS.window->display();
 	}
 }
 
+void renderGame::fpsCounter() {
+	if (time(NULL) == gVars.FrameCounter.lastTime) {
+		gVars.FrameCounter.renderedFrame++;
+	}
+	else {
+		gVars.FrameCounter.lastTime = time(NULL);
+		gVars.FrameCounter.current_fps = gVars.FrameCounter.renderedFrame;
+		gVars.FrameCounter.renderedFrame = 0;
+	}
+	gVars.FrameCounter.fps_text.setString("FPS: " + to_string(gVars.FrameCounter.current_fps));
+	gVars.RENDER_VARS.window->draw(gVars.FrameCounter.fps_text);
+}
+
 void renderGame::Initialization() {
 	gVars.RENDER_VARS.window = new RenderWindow(VideoMode(gVars.GLOBAL_SETTINGS.WINDOW_WIDTH, gVars.GLOBAL_SETTINGS.WINDOW_HEIGHT), gVars.GLOBAL_SETTINGS.WINDOW_NAME);
-
 
 }
 
@@ -145,26 +158,22 @@ void renderGame::DrawSliderSettings() {
 		gVars.RENDER_VARS.window->draw(gVars.RENDER_VARS.Settings.Slider.slider_currentPoint);
 	}
 }
-
+RectangleShape player_box;
 void renderGame::DrawGame() {
+	// draw player
+
+	player_box.setFillColor(Color(255, 255, 255, 120));
+	player_box.setPosition(g_player.getPos().x, g_player.getPos().y);
+	player_box.setSize(Vector2f(30, 30));
+	player_box.setOrigin(30 / 2, 30 / 2);
 	
-	gVars.Games.sprite.setTextureRect(IntRect(38, 46, 25, 29));
 
-	if (Keyboard::isKeyPressed(Keyboard::Right)) {
-		gVars.Games.sprite.move(0.1, 0);
-		
-		/*gVars.Animation.currentframe += 0.005;
-		if (gVars.Animation.currentframe > 6) gVars.Animation.currentframe -= 6;
+	float dX = g_player.getPos().x -gVars.RENDER_VARS.mouse_pos.x;
+	float dY = g_player.getPos().y - gVars.RENDER_VARS.mouse_pos.y;
+	float rotation = (atan2(dY, dX)) * 180 / 3.14159265;
 
-		gVars.Games.sprite.setTextureRect(IntRect(40 * int(gVars.Animation.currentframe), 244, 40, 50));*/
 
-		
-	}
-	gVars.RENDER_VARS.window->draw(gVars.Games.sprite);
-}
+	player_box.setRotation(rotation);
+	gVars.RENDER_VARS.window->draw(player_box);
 
-//void renderGame::InputKey() {
-//	
-//}
-  
-
+}	

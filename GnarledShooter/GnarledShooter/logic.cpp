@@ -76,6 +76,7 @@ void logicGame::pressGeneralMenuButton(int func_id) {
 		case 0: {
 			loadGame::GameLoadNormal();
 			gVars.GLOBAL_VARS.gameActiveMode = GAME;
+			
 			break;
 		}
 		case 2: {
@@ -109,7 +110,7 @@ void logicGame::pressGeneralSettingSlider(int slider_id) {
 	int start_point_slider = gVars.objList.Settings.sliderList[slider_id].posX + gVars.objList.Settings.sliderList[slider_id].slider_start_x;
 	int end_point_slider = (gVars.objList.Settings.sliderList[slider_id].width - gVars.objList.Settings.sliderList[slider_id].slider_start_x) + (gVars.objList.Settings.sliderList[slider_id].posX + gVars.objList.Settings.sliderList[slider_id].slider_start_x);
 	int size_point_slider = (end_point_slider - start_point_slider);
-	double tmp = -(start_point_slider - gVars.RENDER_VARS.mouse_pos.x);
+	float tmp = -(start_point_slider - gVars.RENDER_VARS.mouse_pos.x);
 	if (tmp < 0.f) {
 		tmp = 0.f;
 	}
@@ -117,5 +118,4 @@ void logicGame::pressGeneralSettingSlider(int slider_id) {
 		tmp = 310.f;
 	}
 	gVars.objList.Settings.sliderList[slider_id].currentValue = tmp / 310.f;
-
 }
