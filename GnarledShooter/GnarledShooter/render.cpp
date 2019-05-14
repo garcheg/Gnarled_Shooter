@@ -170,8 +170,13 @@ void renderGame::DrawGame() {
 	grass_tmp.setTextureRect(IntRect(0, 0, 430, 60));
 	for (int posX = -g_map.MAP_SIZE_X; posX <= g_map.MAP_SIZE_X; posX += 430) {
 		for (int posY = -g_map.MAP_SIZE_Y; posY <= g_map.MAP_SIZE_Y; posY += 60) {
-			grass_tmp.setPosition(Vector2f(posX - camera_bias.x, posY - camera_bias.y));
-			gVars.RENDER_VARS.window->draw(grass_tmp);
+			int tmpX = posX - camera_bias.x;
+			int tmpY = posY - camera_bias.y;
+			if (tmpX >= -450 && tmpY >= -300 && tmpX <= gVars.GLOBAL_SETTINGS.WINDOW_WIDTH+450 && tmpY <= gVars.GLOBAL_SETTINGS.WINDOW_HEIGHT+300) {
+
+				grass_tmp.setPosition(Vector2f(tmpX, tmpY));
+				gVars.RENDER_VARS.window->draw(grass_tmp);
+			}
 		}
 	}
 	// draw player
@@ -183,7 +188,7 @@ void renderGame::DrawGame() {
 	
 
 	float dX = g_player.getPos().x -gVars.RENDER_VARS.mouse_pos.x;
-	float dY = g_player.getPos().y - gVars.RENDER_VARS.mouse_pos.y;
+	float dY = g_player.getPos().y -gVars.RENDER_VARS.mouse_pos.y;
 	float rotation = (atan2(dY, dX)) * 180 / 3.14159265;
 
 
