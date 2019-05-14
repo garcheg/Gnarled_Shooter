@@ -76,7 +76,7 @@ void logicGame::pressGeneralMenuButton(int func_id) {
 		case 0: {
 			loadGame::GameLoadNormal();
 			gVars.GLOBAL_VARS.gameActiveMode = GAME;
-			GameCamera g_camera;
+			
 			break;
 		}
 		case 2: {
