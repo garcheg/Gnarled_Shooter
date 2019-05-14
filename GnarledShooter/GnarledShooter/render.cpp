@@ -55,6 +55,7 @@ void renderGame::generalThread() {
 void renderGame::Initialization() {
 	gVars.RENDER_VARS.window = new RenderWindow(VideoMode(gVars.GLOBAL_SETTINGS.WINDOW_WIDTH, gVars.GLOBAL_SETTINGS.WINDOW_HEIGHT), gVars.GLOBAL_SETTINGS.WINDOW_NAME);
 
+
 }
 
 void renderGame::DrawGeneralMenu() {
@@ -146,38 +147,24 @@ void renderGame::DrawSliderSettings() {
 }
 
 void renderGame::DrawGame() {
-	gVars.Games.image.loadFromFile("images/fang.png"); // Загрузка картинки 
-	gVars.Games.texture.loadFromImage(gVars.Games.image); // Загрука текстур
-	gVars.Games.image.~Image();
-	gVars.Games.sprite.setTexture(gVars.Games.texture); // Загрузка спрайта
+	
+	gVars.Games.sprite.setTextureRect(IntRect(38, 46, 25, 29));
 
-	gVars.Games.sprite.setTextureRect(IntRect(40, 190, 39, 54));
-	
-	if (Keyboard::isKeyPressed(Keyboard::Left)) { 
-		gVars.Games.sprite.move(-5, 0); 
-	}
-	
-	if (Keyboard::isKeyPressed(Keyboard::Right)) { 
-		gVars.Games.sprite.move(5, 0); 
-		gVars.Animation.currentframe += 0.005;
+	if (Keyboard::isKeyPressed(Keyboard::Right)) {
+		gVars.Games.sprite.move(0.1, 0);
+		
+		/*gVars.Animation.currentframe += 0.005;
 		if (gVars.Animation.currentframe > 6) gVars.Animation.currentframe -= 6;
-		gVars.Games.sprite.setTextureRect(IntRect(40 * int(gVars.Animation.currentframe), 243, 39, 54));
+
+		gVars.Games.sprite.setTextureRect(IntRect(40 * int(gVars.Animation.currentframe), 244, 40, 50));*/
+
+		
 	}
-
-
-	if (Keyboard::isKeyPressed(Keyboard::Up)) { gVars.Games.sprite.move(0, -5); }
-	if (Keyboard::isKeyPressed(Keyboard::Down)) { gVars.Games.sprite.move(0, 5); }
-
 	gVars.RENDER_VARS.window->draw(gVars.Games.sprite);
-}	
+}
 
 //void renderGame::InputKey() {
-//	if (Keyboard::isKeyPressed(Keyboard::Left))
-//	{
-//		gVars.Games.sprite.move(0, -0.1);
-//	}
-//
-//	gVars.RENDER_VARS.window->draw(gVars.Games.sprite);
+//	
 //}
   
 

@@ -47,7 +47,11 @@ void loadGame::GameLoadNormal() {
 	}
 	else
 	{
+		gVars.Games.image.loadFromFile("images/test.png"); // Загрузка картинки 
+		gVars.Games.texture.loadFromImage(gVars.Games.image); // Загрука текстур
+		gVars.Games.sprite.setTexture(gVars.Games.texture); // Загрузка спрайта
 		Utilities::PrintLog("Textures loaded!");
 	}
+
 
 }

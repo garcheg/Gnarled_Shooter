@@ -158,7 +158,7 @@ struct globalVars {
 	} Games;
 
 	struct {
-		int currentframe = 0;
+		float currentframe = 0;
 	} Animation;
 
 
