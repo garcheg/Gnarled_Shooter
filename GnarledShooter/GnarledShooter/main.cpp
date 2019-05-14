@@ -40,4 +40,10 @@ void InitThread() {
 	Utilities::FastThread(renderGame::generalThread);
 	if (gVars.GLOBAL_SETTINGS.DEVELOPER_MODE) { Utilities::PrintLog("Запуск потока логики"); }
 	Utilities::FastThread(logicGame::initLogic);
+
+
+	// TEMP DEVOPLING
+	loadGame::GameLoadNormal();
+	gVars.GLOBAL_VARS.gameActiveMode = GAME;
+	GameCamera g_camera;
 }

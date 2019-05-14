@@ -158,7 +158,22 @@ void renderGame::DrawSliderSettings() {
 		gVars.RENDER_VARS.window->draw(gVars.RENDER_VARS.Settings.Slider.slider_currentPoint);
 	}
 }
-
+RectangleShape player_box;
 void renderGame::DrawGame() {
-	
+	Vector2f player;
+	player.x = 120;
+	player.y = 90;
+	player_box.setFillColor(Color(255, 255, 255, 120));
+	player_box.setPosition(player.x, player.y);
+	player_box.setSize(Vector2f(30, 30));
+	player_box.setOrigin(30 / 2, 30 / 2);
+
+	float dX = player.x-gVars.RENDER_VARS.mouse_pos.x;
+	float dY = player.y- gVars.RENDER_VARS.mouse_pos.y;
+	float rotation = (atan2(dY, dX)) * 180 / 3.14159265;
+
+
+	player_box.setRotation(rotation);
+	gVars.RENDER_VARS.window->draw(player_box);
+
 }	
