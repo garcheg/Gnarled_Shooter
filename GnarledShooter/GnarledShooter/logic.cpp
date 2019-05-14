@@ -6,6 +6,7 @@ void logicGame::initLogic() {
 	while (gVars.GLOBAL_VARS.GAME_ON) {
 		if (gVars.GLOBAL_VARS.gameActiveMode == MENU) { logicGame::logicGeneralMenu(); }
 		if (gVars.GLOBAL_VARS.gameActiveMode == MENU_SETTINGS) { logicGame::logicGeneralSettings(); }
+		logicGame::logicKeys();
 		Sleep(10);
 	}
 }
@@ -118,4 +119,11 @@ void logicGame::pressGeneralSettingSlider(int slider_id) {
 		tmp = 310.f;
 	}
 	gVars.objList.Settings.sliderList[slider_id].currentValue = tmp / 310.f;
+}
+
+void logicGame::logicKeys() {
+	if (GetAsyncKeyState(VK_LEFT)) { g_player.moveLeft(); }
+	if (GetAsyncKeyState(VK_RIGHT)) { g_player.moveRight(); }
+	if (GetAsyncKeyState(VK_UP)) { g_player.moveUp(); }
+	if (GetAsyncKeyState(VK_DOWN)) { g_player.moveDown(); }
 }

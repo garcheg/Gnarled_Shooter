@@ -20,4 +20,5 @@ namespace logicGame {
 	void pressGeneralMenuButton(int func_id);
 	void logicGeneralSettings();
 	void pressGeneralSettingSlider(int slider_id);
+	void logicKeys();
 }

@@ -210,12 +210,44 @@ extern GameCamera g_camera;
 
 class GamePlayer {
 public:
+	GamePlayer (){
+		pl_Size.x = 30;
+		pl_Size.y = 30;
+
+		pl_Pos.x = 200;
+		pl_Pos.y = 200;
+
+
+	}
+
 	Vector2f getPos() {
 		return pl_Pos;
 	}
 
+	Vector2f getSize() {
+		return pl_Size;
+	}
+
+	void moveUp() {
+		pl_Pos.y -= player_speed;
+	}
+	void moveDown() {
+		pl_Pos.y += player_speed;
+	}
+
+	void moveLeft() {
+		pl_Pos.x -= player_speed;
+	}
+
+	void moveRight() {
+		pl_Pos.x += player_speed;
+	}
+
 private:
 	Vector2f pl_Pos;
+	Vector2f pl_Size;
+
+	float player_speed = 2;
 };
 
 extern GamePlayer g_player;
