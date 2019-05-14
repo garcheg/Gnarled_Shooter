@@ -53,3 +53,7 @@ void loadGame::GameLoadNormal() {
 	
 
 }
+
+void loadGame::MusicLoadNormal() {
+	gVars.MusicaGame.music.openFromFile("music/musicgame.ogg"); // «¿√–”« ¿
+}

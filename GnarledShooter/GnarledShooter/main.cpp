@@ -1,5 +1,6 @@
 // ~~~~~~~~~ [ Includes ] ~~~~~~~~~ //
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <Windows.h>
 #include <iostream>
 #include <string>

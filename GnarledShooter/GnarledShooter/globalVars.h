@@ -175,6 +175,9 @@ struct globalVars {
 		Text fps_text;
 	} FrameCounter;
 
+	struct {
+		Music music;
+	} MusicaGame; // —“–” “”–¿ Ã”«€ »
 
 }; extern globalVars gVars;
 
