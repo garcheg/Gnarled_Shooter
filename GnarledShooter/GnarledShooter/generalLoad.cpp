@@ -46,8 +46,10 @@ void loadGame::StartupLoadFast() {
 }
 
 void loadGame::GameLoadNormal() {
-	// Load sprite player
-
+	// Load sprite map
+	g_map.grass.img.loadFromFile("images/map_sprite.png");
+	g_map.grass.textr.loadFromImage(g_map.grass.img);
+	g_map.grass.sprite.setTexture(g_map.grass.textr);
 	
 
 }

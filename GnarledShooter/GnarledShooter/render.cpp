@@ -160,10 +160,24 @@ void renderGame::DrawSliderSettings() {
 }
 RectangleShape player_box;
 void renderGame::DrawGame() {
+	g_camera.setPos(g_player.getPos());
+
+	Vector2f camera_bias = g_camera.getPos();
+
+	// draw map
+	Sprite grass_tmp;
+	grass_tmp.setTexture(g_map.grass.textr);
+	grass_tmp.setTextureRect(IntRect(0, 0, 430, 60));
+	for (int posX = -g_map.MAP_SIZE_X; posX <= g_map.MAP_SIZE_X; posX += 430) {
+		for (int posY = -g_map.MAP_SIZE_Y; posY <= g_map.MAP_SIZE_Y; posY += 60) {
+			grass_tmp.setPosition(Vector2f(posX - camera_bias.x, posY - camera_bias.y));
+			gVars.RENDER_VARS.window->draw(grass_tmp);
+		}
+	}
 	// draw player
 
 	player_box.setFillColor(Color(255, 255, 255, 120));
-	player_box.setPosition(g_player.getPos().x, g_player.getPos().y);
+	player_box.setPosition((gVars.GLOBAL_SETTINGS.WINDOW_WIDTH / 2) - (g_player.pl_Size.x / 2), (gVars.GLOBAL_SETTINGS.WINDOW_HEIGHT / 2) - (g_player.pl_Size.y / 2));
 	player_box.setSize(Vector2f(g_player.getSize().x, g_player.getSize().y));
 	player_box.setOrigin(g_player.getSize().x / 2, g_player.getSize().y / 2);
 	
@@ -175,5 +189,5 @@ void renderGame::DrawGame() {
 
 	player_box.setRotation(rotation);
 	gVars.RENDER_VARS.window->draw(player_box);
-
 }	
+// 430x60 grass

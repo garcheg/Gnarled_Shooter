@@ -28,6 +28,15 @@ struct sliderObj {
 	bool hovered = false;
 };
 
+struct objRender {
+	Image img;
+	Texture textr;
+	Sprite sprite;
+
+	Vector2i size;
+
+};
+
 
 struct buttonObj {
 	int posX, posY;
@@ -170,7 +179,26 @@ struct globalVars {
 }; extern globalVars gVars;
 
 
+class GameMap {
+public:
+	GameMap() {
+		pl_Spawn.x = 10*32;
+		pl_Spawn.y = 10*32;
+	}
 
+	Vector2f getSpawnPos() {
+		return pl_Spawn;
+	}
+
+	CONST INT MAP_SIZE_X = 100 * 32;
+	CONST INT MAP_SIZE_Y = 100 * 32;
+	// MAP SPRITES
+	objRender grass;
+
+private:
+	Vector2f pl_Spawn;
+};
+extern GameMap g_map;
 
 class GameCamera {
 public:
@@ -214,8 +242,8 @@ public:
 		pl_Size.x = 30;
 		pl_Size.y = 30;
 
-		pl_Pos.x = 200;
-		pl_Pos.y = 200;
+		pl_Pos.x = g_map.getSpawnPos().x;
+		pl_Pos.y = g_map.getSpawnPos().y;
 
 
 	}
@@ -242,13 +270,12 @@ public:
 	void moveRight() {
 		pl_Pos.x += player_speed;
 	}
-
+	Vector2f pl_Size;
 private:
 	Vector2f pl_Pos;
-	Vector2f pl_Size;
+
 
 	float player_speed = 2;
 };
 
 extern GamePlayer g_player;
-
